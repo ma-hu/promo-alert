@@ -1,43 +1,58 @@
-zoom                                                                                                                    PAGE 1
+text                                                                                                                    PAGE 1
                          1     ;--------------------------------------------------------------------
-                         2     ; Modul - Zoom
+                         2     ; Modul - M
                          3     ;--------------------------------------------------------------------
-0039 020000              4     ljmp INIT
+006E 020000              4     ljmp INIT
                          5
                          6     ORG 00H
                          7
                          8     INIT:
-0000 787E                9     mov R0,#01111110b
-0002 7900               10     mov R1,#00000000b
-0004 7BFF               11     mov R3,#11111111b
-0006 020009             12     jmp RUN
-                        13
-                        14     RUN:
-0009 8880               15     mov P0,R0
-000B 8990               16     mov P1,R1
-000D 020038             17     jmp delay
-0010 7580BD             18     mov P0,#10111101b
-0013 7580DB             19     mov P0,#11011011b
-0016 7580E7             20     mov P0,#11100111b
-0019 7580DB             21     mov P0,#11011011b
-001C 7580BD             22     mov P0,#10111101b
-001F 8880               23     mov P0,R0
-0021 8980               24     mov P0,R1
-0023 8890               25     mov P1,R0
-0025 7590BD             26     mov P1,#10111101b
-0028 7590DB             27     mov P1,#11011011b
-002B 7590E7             28     mov P1,#11100111b
-002E 7590DB             29     mov P1,#11011011b
-0031 7590BD             30     mov P1,#10111101b
-0034 8890               31     mov P1,R0
-0036 80D1               32     jmp Run
-                        33
-                        34     Delay:
-0038 22                 35     RET
-                        36
-                        37     end
-ASSEMBLY COMPLETE, NO ERRORS FOUND, NO WARNINGS
+0000 78FE                9     mov R0,#11111110b
+0002 797F               10     mov R1,#01111111b
+0004 020007             11     jmp RUN
+                        12
+                        13     RUN:
+0007 8880               14     mov P0,R0
+0009 8990               15     mov P1,R1
+000B 7590BF             16     mov P1,#10111111b
+000E 7590DF             17     mov P1,#11011111b
+0011 7590EF             18     mov P1,#11101111b
+0014 7590F7             19     mov P1,#11110111b
+0017 7590FB             20     mov P1,#11111011b
+001A 7590FD             21     mov P1,#11111101b
+001D 7590FE             22     mov P1,#11111110b
+0020 7590FD             23     mov P1,#11111101b
+0023 7580FD             24     mov P0,#11111101b
+0026 7580FF             25     mov P0,#11111111b
+0029 7590FB             26     mov P1,#11111011b
+002C 7580FB             27     mov P0,#11111011b
+002F 7580FF             28     mov P0,#11111111b
+0032 7590F7             29     mov P1,#11110111b
+0035 7580F7             30     mov P0,#11110111b
+0038 7580EF             31     mov P0,#11101111b
+003B 7580FF             32     mov P0,#11111111b
+003E 7590FB             33     mov P1,#11111011b
+0041 7580DF             34     mov P0,#11011111b
+0044 7590FB             35     mov P1,#11111011b
+0047 7580FF             36     mov P0,#11111111b
+004A 7590FD             37     mov P1,#11111101b
+004D 7580BF             38     mov P0,#10111111b
+0050 7580FF             39     mov P0,#11111111b
+0053 7590FE             40     mov P1,#11111110b
+0056 75807F             41     mov P0,#01111111b
+0059 7590FD             42     mov P1,#11111101b
+005C 7590FB             43     mov P1,#11111011b
+005F 7590F7             44     mov P1,#11110111b
+0062 7590EF             45     mov P1,#11101111b
+0065 7590DF             46     mov P1,#11011111b
+0068 7590BF             47     mov P1,#10111111b
+006B 75907F             48     mov P1,#01111111b
+****WARNING: Missing `END' directive
+ASSEMBLY COMPLETE, NO ERRORS FOUND, 1 WARNING
 
+
+ERROR SUMMARY:
+Line 48, WARNING: Missing `END' directive
 
 SYMBOL TABLE:
 ??MCU_8051_IDE . . . . . . . . . . .  N  NUMB  8051H  NOT USED
@@ -93,7 +108,6 @@ CPRL2. . . . . . . . . . . . . . . .  B  ADDR  00C8H  NOT USED
 CR . . . . . . . . . . . . . . . . .  B  ADDR  00DEH  NOT USED
 CT2. . . . . . . . . . . . . . . . .  B  ADDR  00C9H  NOT USED
 CY . . . . . . . . . . . . . . . . .  B  ADDR  00D7H  NOT USED
-DELAY. . . . . . . . . . . . . . . .  C  ADDR  0038H
 DP0H . . . . . . . . . . . . . . . .  D  ADDR  0083H  NOT USED
 DP0L . . . . . . . . . . . . . . . .  D  ADDR  0082H  NOT USED
 DP1H . . . . . . . . . . . . . . . .  D  ADDR  0085H  NOT USED
@@ -173,7 +187,7 @@ RESET. . . . . . . . . . . . . . . .  C  ADDR  0000H  NOT USED
 RI . . . . . . . . . . . . . . . . .  B  ADDR  0098H  NOT USED
 RS0. . . . . . . . . . . . . . . . .  B  ADDR  00D3H  NOT USED
 RS1. . . . . . . . . . . . . . . . .  B  ADDR  00D4H  NOT USED
-RUN. . . . . . . . . . . . . . . . .  C  ADDR  0009H
+RUN. . . . . . . . . . . . . . . . .  C  ADDR  0007H
 RXD. . . . . . . . . . . . . . . . .  B  ADDR  00B0H  NOT USED
 SADDR. . . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED
 SADDR_0. . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED

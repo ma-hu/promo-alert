@@ -31,7 +31,8 @@ zoom                                                                            
 0031 8890               30     mov P1,R0
 0033 80D4               31     jmp Run
                         32
-                        33     end
+                        33
+                        34     end
 ASSEMBLY COMPLETE, NO ERRORS FOUND, NO WARNINGS
 
 
