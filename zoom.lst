@@ -2,22 +2,36 @@ zoom                                                                            
                          1     ;--------------------------------------------------------------------
                          2     ; Modul - Zoom
                          3     ;--------------------------------------------------------------------
-000F 020000              4     ljmp INIT
+0035 020000              4     ljmp INIT
                          5
                          6     ORG 00H
                          7
                          8     INIT:
-0000 78FE                9     mov R0,#11111110b
-0002 79FE               10     mov R1,#11111110b
-0004 020007             11     jmp RUN
-                        12
-                        13     RUN:
-0007 8880               14     mov P0,R0
-0009 8990               15     mov P1,R1
-                        16
-000B 8980               17     mov P0,R1
-000D 8A90               18     mov P1,R2
-                        19     end
+0000 787E                9     mov R0,#01111110b
+0002 7900               10     mov R1,#00000000b
+0004 7BFF               11     mov R3,#11111111b
+0006 020009             12     jmp RUN
+                        13
+                        14     RUN:
+0009 8880               15     mov P0,R0
+000B 8990               16     mov P1,R1
+000D 7580BD             17     mov P0,#10111101b
+0010 7580DB             18     mov P0,#11011011b
+0013 7580E7             19     mov P0,#11100111b
+0016 7580DB             20     mov P0,#11011011b
+0019 7580BD             21     mov P0,#10111101b
+001C 8880               22     mov P0,R0
+001E 8980               23     mov P0,R1
+0020 8890               24     mov P1,R0
+0022 7590BD             25     mov P1,#10111101b
+0025 7590DB             26     mov P1,#11011011b
+0028 7590E7             27     mov P1,#11100111b
+002B 7590DB             28     mov P1,#11011011b
+002E 7590BD             29     mov P1,#10111101b
+0031 8890               30     mov P1,R0
+0033 80D4               31     jmp Run
+                        32
+                        33     end
 ASSEMBLY COMPLETE, NO ERRORS FOUND, NO WARNINGS
 
 
@@ -154,7 +168,7 @@ RESET. . . . . . . . . . . . . . . .  C  ADDR  0000H  NOT USED
 RI . . . . . . . . . . . . . . . . .  B  ADDR  0098H  NOT USED
 RS0. . . . . . . . . . . . . . . . .  B  ADDR  00D3H  NOT USED
 RS1. . . . . . . . . . . . . . . . .  B  ADDR  00D4H  NOT USED
-RUN. . . . . . . . . . . . . . . . .  C  ADDR  0007H
+RUN. . . . . . . . . . . . . . . . .  C  ADDR  0009H
 RXD. . . . . . . . . . . . . . . . .  B  ADDR  00B0H  NOT USED
 SADDR. . . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED
 SADDR_0. . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED

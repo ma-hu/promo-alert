@@ -1,50 +1,48 @@
 promocode                                                                                                               PAGE 1
-                         1     ;--------------------------------------------------------------------
-                         2     ;Modul - Schlange
-                         3     ;--------------------------------------------------------------------
-0035 020000              4     ljmp INIT
+                         1
+0035 020000              2     ljmp INIT
+                         3
+                         4     ORG 00H         ; Ab da kommen die Variablen hin
                          5
-                         6     ORG 00H         ; Ab da kommen die Variablen hin
-                         7
-                         8     INIT:
-0000 78FE                9     mov R0,#11111110b
-0002 79FE               10     mov R1,#11111110b
-0004 7B01               11     mov R3,#1b              ; Flag - wenn 1 dann runter, wenn 0 dann hoch
-0006 020009             12     jmp RUN
-                        13
-                        14     RUN:
-0009 8880               15     mov P0,R0
-000B 8990               16     mov P1,R1
-000D BB0003             17     cjne R3,#0b,RUNTER ; Solange Punkt noch nicht ganz unten gehe RUNTER
-0010 020024             18     jmp HOCH
-                        19
-                        20     RUNTER:
-0013 E9                 21     mov A,R1
-0014 23                 22     rl A
-0015 F9                 23     mov R1,A
-0016 B97FF0             24     cjne R1,#01111111b,RUN
-0019 7B00               25     mov R3,#0b
-001B 8880               26     mov P0,R0
-001D 8990               27     mov P1,R1
-001F E8                 28     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
-0020 23                 29     rl A
-0021 F8                 30     mov R0,A
-0022 80E5               31     jmp RUN
-                        32
-                        33     HOCH:
-0024 E9                 34     mov A,R1
-0025 03                 35     rr A
-0026 F9                 36     mov R1,A
-0027 B9FEDF             37     cjne R1,#11111110b,RUN
-002A 7B01               38     mov R3,#1b
-002C 8880               39     mov P0,R0
-002E 8990               40     mov P1,R1
-0030 E8                 41     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
-0031 23                 42     rl A
-0032 F8                 43     mov R0,A
-0033 80D4               44     jmp RUN
-                        45
-                        46     end
+                         6     INIT:
+0000 78FE                7     mov R0,#11111110b
+0002 79FE                8     mov R1,#11111110b
+0004 7B01                9     mov R3,#1b              ; Flag - wenn 1 dann runter, wenn 0 dann hoch
+0006 020009             10     jmp RUN
+                        11
+                        12     RUN:
+0009 8880               13     mov P0,R0
+000B 8990               14     mov P1,R1
+000D BB0003             15     cjne R3,#0b,RUNTER ; Solange Punkt noch nicht ganz unten gehe RUNTER
+0010 020024             16     jmp HOCH
+                        17
+                        18     RUNTER:
+0013 E9                 19     mov A,R1
+0014 23                 20     rl A
+0015 F9                 21     mov R1,A
+0016 B97FF0             22     cjne R1,#01111111b,RUN
+0019 7B00               23     mov R3,#0b
+001B 8880               24     mov P0,R0
+001D 8990               25     mov P1,R1
+001F E8                 26     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
+0020 23                 27     rl A
+0021 F8                 28     mov R0,A
+0022 80E5               29     jmp RUN
+                        30
+                        31     HOCH:
+0024 E9                 32     mov A,R1
+0025 03                 33     rr A
+0026 F9                 34     mov R1,A
+0027 B9FEDF             35     cjne R1,#11111110b,RUN
+002A 7B01               36     mov R3,#1b
+002C 8880               37     mov P0,R0
+002E 8990               38     mov P1,R1
+0030 E8                 39     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
+0031 23                 40     rl A
+0032 F8                 41     mov R0,A
+0033 80D4               42     jmp RUN
+                        43
+                        44     end
 ASSEMBLY COMPLETE, NO ERRORS FOUND, NO WARNINGS
 
 
