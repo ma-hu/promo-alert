@@ -2,54 +2,78 @@ text                                                                            
                          1     ;--------------------------------------------------------------------
                          2     ; Modul - M
                          3     ;--------------------------------------------------------------------
-0065 020000              4     ljmp INIT
+0080 020000              4     ljmp INIT
                          5
                          6     ORG 00H
                          7
                          8     INIT:
 0000 78FE                9     mov R0,#11111110b
 0002 797F               10     mov R1,#01111111b
-0004 020007             11     jmp RUN
-                        12
-                        13     RUN:
-0007 8880               14     mov P0,R0
-0009 8990               15     mov P1,R1
-000B 7590BF             16     mov P1,#10111111b
-000E 7590DF             17     mov P1,#11011111b
-0011 7590EF             18     mov P1,#11101111b
-0014 7590F7             19     mov P1,#11110111b
-0017 7590FB             20     mov P1,#11111011b
-001A 7590FD             21     mov P1,#11111101b
-001D 7590FE             22     mov P1,#11111110b
-0020 7590FD             23     mov P1,#11111101b
-0023 7580FD             24     mov P0,#11111101b
-0026 7580FF             25     mov P0,#11111111b
-0029 7590FB             26     mov P1,#11111011b
-002C 7580FB             27     mov P0,#11111011b
-002F 7580FF             28     mov P0,#11111111b
-0032 7590F7             29     mov P1,#11110111b
-0035 7580F7             30     mov P0,#11110111b
-0038 7580EF             31     mov P0,#11101111b
-003B 7580FF             32     mov P0,#11111111b
-003E 7590FB             33     mov P1,#11111011b
-0041 7580DF             34     mov P0,#11011111b
-0044 7590FB             35     mov P1,#11111011b
-0047 7580FF             36     mov P0,#11111111b
-004A 7590FD             37     mov P1,#11111101b
-004D 7580BF             38     mov P0,#10111111b
-0050 7580FF             39     mov P0,#11111111b
-0053 7590FE             40     mov P1,#11111110b
-0056 75807F             41     mov P0,#01111111b
-0059 7590FD             42     mov P1,#11111101b
-005C 7590FB             43     mov P1,#11111011b
-005F 7590F7             44     mov P1,#11110111b
-0062 7590EF             45     mov P1,#11101111b
+0004 7B01               11     mov R3,#1b
+0006 020009             12     jmp RUN
+                        13
+                        14     RUN:
+0009 8880               15     mov P0,R0
+000B 8990               16     mov P1,R1
+000D BB005F             17     cjne R3,#0b,HOCH
+0010 7590FD             18     mov P1,#11111101b
+0013 7580FD             19     mov P0,#11111101b
+0016 7580FF             20     mov P0,#11111111b
+0019 7590FB             21     mov P1,#11111011b
+001C 7580FB             22     mov P0,#11111011b
+001F 7580FF             23     mov P0,#11111111b
+0022 7590F7             24     mov P1,#11110111b
+0025 7580F7             25     mov P0,#11110111b
+0028 7580EF             26     mov P0,#11101111b
+002B 7580FF             27     mov P0,#11111111b
+002E 7590FB             28     mov P1,#11111011b
+0031 7580DF             29     mov P0,#11011111b
+0034 7590FB             30     mov P1,#11111011b
+0037 7580FF             31     mov P0,#11111111b
+003A 7590FD             32     mov P1,#11111101b
+003D 7580BF             33     mov P0,#10111111b
+0040 7580FF             34     mov P0,#11111111b
+0043 7590FE             35     mov P1,#11111110b
+0046 75807F             36     mov P0,#01111111b
+0049 7590FD             37     mov P1,#11111101b
+004C 7590FB             38     mov P1,#11111011b
+004F 7590F7             39     mov P1,#11110111b
+0052 7590EF             40     mov P1,#11101111b
+0055 7590DF             41     mov P1,#11011111b
+0058 7590BF             42     mov P1,#10111111b
+005B 75907F             43     mov P1,#01111111b
+                        44
+                        45     RUNTER:
+005E E9                 46     mov A,R1
+005F 23                 47     rl A
+0060 F9                 48     mov R1,A
+0061 B97FA5             49     cjne R1,#01111111b,RUN
+0064 7B00               50     mov R3,#0b
+0066 8880               51     mov P0,R0
+0068 8990               52     mov P1,R1
+006A E8                 53     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
+006B 23                 54     rl A
+006C F8                 55     mov R0,A
+006D 809A               56     jmp RUN
+                        57
+                        58     HOCH:
+006F E9                 59     mov A,R1
+0070 03                 60     rr A
+0071 F9                 61     mov R1,A
+0072 B9FE94             62     cjne R1,#11111110b,RUN
+0075 7B00               63     mov R3,#0b
+0077 8880               64     mov P0,R0
+0079 8990               65     mov P1,R1
+007B E8                 66     mov A,R0                  ; Punkt ganz unten >> eins nach rechts
+007C 23                 67     rl A
+007D F8                 68     mov R0,A
+007E 8089               69     jmp RUN
 ****WARNING: Missing `END' directive
 ASSEMBLY COMPLETE, NO ERRORS FOUND, 1 WARNING
 
 
 ERROR SUMMARY:
-Line 45, WARNING: Missing `END' directive
+Line 69, WARNING: Missing `END' directive
 
 SYMBOL TABLE:
 ??MCU_8051_IDE . . . . . . . . . . .  N  NUMB  8051H  NOT USED
@@ -126,6 +150,7 @@ EXTI0. . . . . . . . . . . . . . . .  C  ADDR  0003H  NOT USED
 EXTI1. . . . . . . . . . . . . . . .  C  ADDR  0013H  NOT USED
 F0 . . . . . . . . . . . . . . . . .  B  ADDR  00D5H  NOT USED
 FE . . . . . . . . . . . . . . . . .  B  ADDR  009FH  NOT USED
+HOCH . . . . . . . . . . . . . . . .  C  ADDR  006FH
 IE . . . . . . . . . . . . . . . . .  D  ADDR  00A8H  NOT USED
 IE0. . . . . . . . . . . . . . . . .  B  ADDR  0089H  NOT USED
 IE1. . . . . . . . . . . . . . . . .  B  ADDR  008BH  NOT USED
@@ -184,7 +209,8 @@ RESET. . . . . . . . . . . . . . . .  C  ADDR  0000H  NOT USED
 RI . . . . . . . . . . . . . . . . .  B  ADDR  0098H  NOT USED
 RS0. . . . . . . . . . . . . . . . .  B  ADDR  00D3H  NOT USED
 RS1. . . . . . . . . . . . . . . . .  B  ADDR  00D4H  NOT USED
-RUN. . . . . . . . . . . . . . . . .  C  ADDR  0007H
+RUN. . . . . . . . . . . . . . . . .  C  ADDR  0009H
+RUNTER . . . . . . . . . . . . . . .  C  ADDR  005EH  NOT USED
 RXD. . . . . . . . . . . . . . . . .  B  ADDR  00B0H  NOT USED
 SADDR. . . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED
 SADDR_0. . . . . . . . . . . . . . .  D  ADDR  00A9H  NOT USED
