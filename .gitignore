@@ -4,6 +4,7 @@
 # But not these files...
 !.gitignore
 !*.asm
+!readme.md
 # etc...
 
 # ...even if they are in subdirectories
