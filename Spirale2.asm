@@ -69,6 +69,9 @@ mov R1, A
 jmp RUNHOCHRUNTER
 
 RECHTS:
+mov A, R5
+XRL A, #11101111b
+JZ INIT
 mov A,R0
 rl A
 mov R0, A
