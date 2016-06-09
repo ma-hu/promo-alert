@@ -92,13 +92,13 @@ RUNHOCHRUNTER:
 mov P0,R0
 mov P1,R1
 cjne R3,#0b,RUNTER ; Solange Punkt noch nicht ganz unten gehe RUNTER
-jmp HOCH
+jmp HOCH ; Solange Punkt noch nicht ganz oben gehe HOCH
 
 RUNRECHTSLINKS:
 mov P0,R0
 mov P1,R1
-cjne R4,#0b,RECHTS
-jmp LINKS
+cjne R4,#0b,RECHTS ; Solange Punkt noch nicht ganz rechts gehe RECHTS
+jmp LINKS ; Solange Punkt noch nicht ganz links gehe LINKS
 
 RUNTER:
 mov A,R1		  
