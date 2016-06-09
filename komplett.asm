@@ -21,8 +21,8 @@ mov P0,R0
 mov P1,R1
 ;mov P1,#11111011b
 mov P0,#11111111b
-mov P0,R2
 mov P1,#11011111b
+mov P0,R2
 mov P1,#10111111b
 mov P0,R3
 
@@ -34,13 +34,13 @@ mov P0,R0
 mov P1,R1
 mov P1,#11111011b
 mov P0,#11111111b
-mov P0,R2
 mov P1,#11011111b
+mov P0,R2
 mov P1,#10111111b
 mov P0,R3
 
 INC R4
-;wenn 4 Mal durchgelaufen ist, jmp LACHEN
+; solange R4 nicht 4 ist, also noch nicht 4 Mal durchlaufen wurde, jmp LACHEN
 cjne R4, #100b, LACHEN
 ;jmp ZOOM
 call ZOOM
@@ -80,13 +80,13 @@ jmp SCHLANGE
 
 ;------------------- Schlange --------------------
 SCHLANGE:
-mov R0,#11111110b
-mov R1,#11111110b
+mov R0,#11111110b	; Register 0 wird gesetzt
+mov R1,#11111110b	; Register 1 wird gesetzt
 mov R3,#1b		; Flag - wenn 1 dann runter, wenn 0 dann hoch
-mov R4,#1b		; Flag - wenn 1 dann rechts, wenn 0 dann runter
-mov R5,#01111111b
-mov R6,#11111110b
-jmp RUNHochrunter
+mov R4,#1b		; Flag - wenn 1 dann rechts, wenn 0 dann links
+mov R5,#01111111b	; Register 5 zum Prüfen, ob das Licht den Rand erreicht hat
+mov R6,#11111110b	; Register 6 zum Prüfen, ob das Licht den Rand erreicht hat
+jmp RUNHOCHRUNTER
 
 RUNHOCHRUNTER:
 mov P0,R0
@@ -108,7 +108,7 @@ cjne A,05h,RUNHOCHRUNTER
 mov R4,#1b
 mov P0,R0
 mov P1,R1
-mov A,R0		  ; Punkt ganz unten >> eins nach rechts
+mov A,R0		  
 rl A
 mov R0,A
 jmp RUNRECHTSLINKS
@@ -121,7 +121,7 @@ cjne A,06h,RUNHOCHRUNTER
 mov R4,#0b
 mov P0,R0
 mov P1,R1
-mov A,R0		  ; Punkt ganz unten >> eins nach rechts
+mov A,R0		  
 rr A
 mov R0,A
 mov A, R6
