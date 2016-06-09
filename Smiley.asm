@@ -18,8 +18,8 @@ mov P0,R0
 mov P1,R1
 ;mov P1,#11111011b
 mov P0,#11111111b
-mov P0,R2
 mov P1,#11011111b
+mov P0,R2
 mov P1,#10111111b
 mov P0,R3
 
@@ -31,8 +31,8 @@ mov P0,R0
 mov P1,R1
 mov P1,#11111011b
 mov P0,#11111111b
-mov P0,R2
 mov P1,#11011111b
+mov P0,R2
 mov P1,#10111111b
 mov P0,R3
 ;jmp lachen
